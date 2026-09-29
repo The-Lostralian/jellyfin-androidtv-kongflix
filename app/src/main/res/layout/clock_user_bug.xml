@@ -11,13 +11,14 @@
 
     <ImageButton
         android:id="@+id/home"
-        style="@style/Button.Icon"
-        android:layout_width="72dp"
+        android:layout_width="36dp"
         android:layout_height="36dp"
+        android:background="?attr/selectableItemBackground"
         android:scaleType="fitCenter"
         android:adjustViewBounds="true"
         android:contentDescription="@string/lbl_home"
-        android:src="@drawable/app_logo" />
+        android:src="@drawable/ic_jellyfin"
+        app:tint="@color/accent_mint" />
 
     <TextClock
         android:id="@+id/clock"

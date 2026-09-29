@@ -127,18 +127,21 @@ private fun MainToolbar(
 			}
 		},
 		center = {
-			Logo(
-				modifier = Modifier
-					.height(36.dp)
-					.clickable {
-						if (activeButton != MainToolbarActiveButton.Home) {
-							navigationRepository.navigate(
-								Destinations.home,
-								replace = true,
-							)
+			ToolbarButtons {
+				Logo(
+					modifier = Modifier
+						.height(36.dp)
+						.aspectRatio(210f / 120f)
+						.clickable {
+							if (activeButton != MainToolbarActiveButton.Home) {
+								navigationRepository.navigate(
+									Destinations.home,
+									replace = true,
+								)
+							}
 						}
-					}
-			)
+				)
+			}
 		},
 		end = {
 			ToolbarButtons {
