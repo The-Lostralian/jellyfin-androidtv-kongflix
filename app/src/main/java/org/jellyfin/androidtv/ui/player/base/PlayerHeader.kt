@@ -5,11 +5,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import org.jellyfin.androidtv.ui.shared.toolbar.Logo
 import org.jellyfin.androidtv.ui.shared.toolbar.ToolbarClock
 
 @Composable
@@ -18,11 +20,15 @@ fun PlayerHeader(
 ) {
 	Row(
 		horizontalArrangement = Arrangement.spacedBy(12.dp),
-		verticalAlignment = Alignment.Top,
+		verticalAlignment = Alignment.CenterVertically,
 	) {
 		Column {
 			content()
 		}
+
+		Spacer(Modifier.weight(1f))
+
+		Logo(modifier = Modifier.height(28.dp))
 
 		Spacer(Modifier.weight(1f))
 
