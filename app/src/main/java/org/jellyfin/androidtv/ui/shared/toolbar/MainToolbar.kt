@@ -131,7 +131,7 @@ private fun MainToolbar(
 				Logo(
 					modifier = Modifier
 						.height(36.dp)
-						.aspectRatio(2200f / 550f)
+						.aspectRatio(210f / 40f)
 						.clickable {
 							if (activeButton != MainToolbarActiveButton.Home) {
 								navigationRepository.navigate(
