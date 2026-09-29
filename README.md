@@ -40,19 +40,19 @@
 </p>
 
 Jellyfin for Android TV is a Jellyfin client for Android TV, Nvidia Shield, and Amazon Fire TV devices. We welcome all contributions and pull
-requests! If you have a larger feature in mind please open an issue so we can discuss the implementation before you start. 
+requests! If you have a larger feature in mind, please open an issue so we can discuss the implementation before you start.
 
 ## Building
 
 The app uses Gradle and requires the Android SDK. We recommend using Android Studio, which includes all required dependencies, for
-development and building. For manual building without Android Studio make sure a compatible JDK and Android SDK are installed and in your
-PATH, then use the Gradle wrapper (`./gradlew`) to build the project with the `assembleDebug` Gradle task to generate an apk file:
+development and building. For manual building without Android Studio, make sure a compatible JDK and Android SDK are installed and in your
+PATH, then use the Gradle wrapper (`./gradlew`) to build the project with the `assembleDebug` Gradle task to generate an APK file:
 
 ```shell
 ./gradlew assembleDebug
 ```
 
-The task will create an APK file in the `/app/build/outputs/apk/debug` directory. This APK file uses a different app-id from our stable
+The task will create an APK file in the `app/build/outputs/apk/debug` directory. This APK file uses a different app ID from our stable
 builds and can be manually installed to your device.
 
 ## Branching
