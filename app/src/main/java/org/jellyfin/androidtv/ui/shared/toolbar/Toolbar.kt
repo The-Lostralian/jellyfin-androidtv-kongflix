@@ -18,6 +18,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil3.compose.rememberAsyncImagePainter
 import org.jellyfin.androidtv.R
 import org.jellyfin.androidtv.ui.base.JellyfinTheme
 import org.jellyfin.androidtv.ui.base.Text
@@ -27,7 +28,7 @@ import org.jellyfin.androidtv.ui.composable.rememberCurrentTime
 @Composable
 fun Logo(modifier: Modifier = Modifier) {
 	Image(
-		painter = painterResource(R.drawable.app_logo),
+		painter = rememberAsyncImagePainter(R.drawable.app_logo),
 		contentDescription = stringResource(R.string.app_name),
 		contentScale = ContentScale.Fit,
 		modifier = modifier,
