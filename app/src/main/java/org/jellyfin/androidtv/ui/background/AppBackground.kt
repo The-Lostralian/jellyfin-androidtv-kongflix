@@ -40,7 +40,7 @@ private fun AppThemeBackground() {
 		attributes.recycle()
 
 		if (drawable is ColorDrawable) drawable.toBitmap(1, 1).asImageBitmap()
-		else drawable?.toBitmap()?.asImageBitmap()
+		else drawable?.toBitmap(width = 1, height = 1)?.asImageBitmap()
 	}
 
 	if (themeBackground != null) {

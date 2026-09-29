@@ -3,6 +3,7 @@ package org.jellyfin.androidtv.ui.presentation
 import android.view.KeyEvent
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.basicMarquee
@@ -18,6 +19,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
@@ -306,8 +308,25 @@ private fun CardViewHolderContent(
 
 	val usePreview = displayConfig.overrideShowInfo ?: showInfo
 
+	val isLibraryMovieOrTv = remember(item) {
+		when (item.baseItem?.type) {
+			BaseItemKind.MOVIE, BaseItemKind.VIDEO,
+			BaseItemKind.SERIES, BaseItemKind.SEASON, BaseItemKind.EPISODE,
+			BaseItemKind.COLLECTION_FOLDER, BaseItemKind.USER_VIEW, BaseItemKind.FOLDER -> true
+			else -> false
+		}
+	}
+
+	val border = if (isLibraryMovieOrTv) {
+		BorderStroke(
+			width = 2.dp,
+			color = if (focused) Color(0xFFB8F2C5) else Color(0xFF6D8472)
+		)
+	} else null
+
 	val card = @Composable {
 		ItemCard(
+			border = border,
 			image = {
 				if (image != null) {
 					val api = koinInject<ApiClient>()

@@ -50,7 +50,7 @@ class SearchFragmentDelegate(
 	val onItemViewSelectedListener = OnItemViewSelectedListener { _, item, _, _ ->
 		val baseItem = item?.let { (item as BaseRowItem).baseItem }
 		if (baseItem != null) {
-			backgroundService.setBackground(baseItem)
+			backgroundService.clearBackgrounds()
 		} else {
 			backgroundService.clearBackgrounds()
 		}

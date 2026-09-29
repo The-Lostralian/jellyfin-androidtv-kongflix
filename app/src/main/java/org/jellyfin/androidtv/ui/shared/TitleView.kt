@@ -2,6 +2,7 @@ package org.jellyfin.androidtv.ui.shared
 
 import android.content.Context
 import android.graphics.Rect
+import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
@@ -16,12 +17,21 @@ class TitleView @JvmOverloads constructor(
 	defStyleAttr: Int = 0,
 	defStyleRes: Int = 0,
 ) : RelativeLayout(context, attrs, defStyleAttr, defStyleRes), TitleViewAdapter.Provider {
-	private val binding = ViewLbTitleBinding.inflate(LayoutInflater.from(context), this)
+	private val binding = ViewLbTitleBinding.inflate(LayoutInflater.from(context), this).apply {
+		titleBadge.isVisible = true
+	}
 
 	private val titleViewAdapter: TitleViewAdapter = object : TitleViewAdapter() {
 		override fun setTitle(titleText: CharSequence) {
-			binding.titleText.text = title
+			binding.titleText.text = titleText
 			binding.titleText.isVisible = true
+		}
+
+		override fun setBadgeDrawable(drawable: Drawable?) {
+			if (drawable != null) {
+				binding.titleBadge.setImageDrawable(drawable)
+			}
+			binding.titleBadge.isVisible = true
 		}
 
 		override fun getSearchAffordanceView(): View = binding.titleOrb

@@ -1,6 +1,8 @@
 package org.jellyfin.androidtv.ui.composable.item
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,10 +20,12 @@ fun ItemCard(
 	image: @Composable BoxScope.() -> Unit,
 	overlay: (@Composable BoxScope.() -> Unit)? = null,
 	shape: Shape = JellyfinTheme.shapes.medium,
+	border: BorderStroke? = null,
 ) {
 	Box(
 		modifier = modifier
 			.clip(shape)
+			.then(if (border != null) Modifier.border(border, shape) else Modifier)
 			.background(JellyfinTheme.colorScheme.surface, shape)
 	) {
 		image()

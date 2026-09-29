@@ -283,7 +283,7 @@ class HomeRowsFragment : RowsSupportFragment(), AudioEventListener, View.OnKeyLi
 				val itemRowAdapter = row.adapter as? ItemRowAdapter
 				itemRowAdapter?.loadMoreItemsIfNeeded(itemRowAdapter.indexOf(item))
 
-				backgroundService.setBackground(item.baseItem)
+				backgroundService.clearBackgrounds()
 			}
 		}
 	}

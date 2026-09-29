@@ -1,9 +1,11 @@
 package org.jellyfin.androidtv.ui.shared.toolbar
 
 import androidx.activity.compose.LocalActivity
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.focusGroup
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -125,34 +127,18 @@ private fun MainToolbar(
 			}
 		},
 		center = {
-			ToolbarButtons(
+			Logo(
 				modifier = Modifier
-					.focusRequester(focusRequester)
-			) {
-				ProvideTextStyle(JellyfinTheme.typography.default.copy(fontWeight = FontWeight.Bold)) {
-					Button(
-						onClick = {
-							if (activeButton != MainToolbarActiveButton.Home) {
-								navigationRepository.navigate(
-									Destinations.home,
-									replace = true,
-								)
-							}
-						},
-						colors = if (activeButton == MainToolbarActiveButton.Home) activeButtonColors else ButtonDefaults.colors(),
-						content = { Text(stringResource(R.string.lbl_home)) }
-					)
-					Button(
-						onClick = {
-							if (activeButton != MainToolbarActiveButton.Search) {
-								navigationRepository.navigate(Destinations.search())
-							}
-						},
-						colors = if (activeButton == MainToolbarActiveButton.Search) activeButtonColors else ButtonDefaults.colors(),
-						content = { Text(stringResource(R.string.lbl_search)) }
-					)
-				}
-			}
+					.height(36.dp)
+					.clickable {
+						if (activeButton != MainToolbarActiveButton.Home) {
+							navigationRepository.navigate(
+								Destinations.home,
+								replace = true,
+							)
+						}
+					}
+			)
 		},
 		end = {
 			ToolbarButtons {
