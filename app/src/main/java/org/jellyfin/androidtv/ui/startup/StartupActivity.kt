@@ -186,7 +186,7 @@ class StartupActivity : FragmentActivity() {
 		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_TASK_ON_HOME)
 		Timber.i("Opening next activity $intent")
 		startActivity(intent)
-		finishAfterTransition()
+		finish()
 	}
 
 	// Fragment switching
