@@ -97,7 +97,7 @@ android {
 	}
 }
 
-base.archivesName.set("konglix-v0.0.1")
+base.archivesName.set("kongflix-v0.0.2")
 
 tasks.register("versionTxt") {
 	val path = layout.buildDirectory.asFile.get().resolve("version.txt")
