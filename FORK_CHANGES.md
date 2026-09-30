@@ -36,7 +36,7 @@ Custom SVG assets stored in `assets/` were converted into Android VectorDrawable
 
 ---
 
-## 3. UI & Navigation Tweaks
+## 3. UI, Navigation & Stability Tweaks
 
 ### A. Toolbar & Screen Logos
 * [`app/src/main/java/org/jellyfin/androidtv/ui/shared/toolbar/MainToolbar.kt`](file:///home/marty/jellyfin-androidtv-kongflix/app/src/main/java/org/jellyfin/androidtv/ui/shared/toolbar/MainToolbar.kt) — Removed home/search buttons from center, replaced with centered clickable `Logo()` (aspect ratio 210:40 = 5.25:1, takes user home).
@@ -44,10 +44,11 @@ Custom SVG assets stored in `assets/` were converted into Android VectorDrawable
 * [`app/src/main/java/org/jellyfin/androidtv/ui/shared/TitleView.kt`](file:///home/marty/jellyfin-androidtv-kongflix/app/src/main/java/org/jellyfin/androidtv/ui/shared/TitleView.kt) & [`view_lb_title.xml`](file:///home/marty/jellyfin-androidtv-kongflix/app/src/main/res/layout/view_lb_title.xml) — Ensured `app_logo` badge is visible on Leanback browse title views.
 * [`app/src/main/res/layout/clock_user_bug.xml`](file:///home/marty/jellyfin-androidtv-kongflix/app/src/main/res/layout/clock_user_bug.xml) (`ClockUserView`) — Replaced the generic home house icon (`ic_house`) with `app_logo` across library screens and detail views while preserving home button functionality.
 
-### B. Startup & Player Overlay Header
+### B. Startup, Player Overlay & Android 9 Stability Fix
 * [`app/src/main/java/org/jellyfin/androidtv/ui/startup/fragment/SplashFragment.kt`](file:///home/marty/jellyfin-androidtv-kongflix/app/src/main/java/org/jellyfin/androidtv/ui/startup/fragment/SplashFragment.kt) & [`DreamContentLogo.kt`](file:///home/marty/jellyfin-androidtv-kongflix/app/src/main/java/org/jellyfin/androidtv/integration/dream/composable/DreamContentLogo.kt) — Configured cold-start splash screen and screensavers to display centered `ic_jellyfin` banana icon.
 * [`app/src/main/java/org/jellyfin/androidtv/ui/player/base/PlayerHeader.kt`](file:///home/marty/jellyfin-androidtv-kongflix/app/src/main/java/org/jellyfin/androidtv/ui/player/base/PlayerHeader.kt) — Added `Logo()` to the video player controls header.
 * [`app/src/main/java/org/jellyfin/androidtv/ui/ClockUserView.kt`](file:///home/marty/jellyfin-androidtv-kongflix/app/src/main/java/org/jellyfin/androidtv/ui/ClockUserView.kt) — Set `binding.home.isVisible = true` during video playback so the header logo remains visible when media controls appear.
+* [`app/src/main/AndroidManifest.xml`](file:///home/marty/jellyfin-androidtv-kongflix/app/src/main/AndroidManifest.xml) & [`StartupActivity.kt`](file:///home/marty/jellyfin-androidtv-kongflix/app/src/main/java/org/jellyfin/androidtv/ui/startup/StartupActivity.kt) — Added `android:configChanges` to `StartupActivity` and used `finish()` on activity launch to resolve Android 9 (API 28) `reportSizeConfigurations: ActivityRecord not found` OS crash.
 
 ### C. Background Backdrop Restricting
 * Prevented dynamic movie backdrop loading on home, browse, and search screens, ensuring backdrops only load on item detail pages:
